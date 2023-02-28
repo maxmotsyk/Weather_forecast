@@ -20,6 +20,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: 'Montserrat', sans-serif;
 }
 
 input,a,textarea,button{
@@ -58,14 +59,15 @@ table {
 #root{
     height: 100vh;
     padding: 0;
+    background:va.$background-color-light_th;
 
     .wrapper{
+        padding: 15px 12px;
         min-height: 100%;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        background:va.$background-color-light_th;
 
         header,section,footer{
             width: 100%;
@@ -83,9 +85,6 @@ table {
         }
     
         .container_fluid,.container{
-            display: flex;
-            flex-direction: column;
-            align-items:center;
     
             .row{
                 width: 100%;

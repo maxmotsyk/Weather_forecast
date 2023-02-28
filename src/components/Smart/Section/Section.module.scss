@@ -1,0 +1,43 @@
+@use '/src/assets/module' as va;
+
+section{
+
+    .temperature_type_row{
+        margin: 42px 0 0 0;
+
+        .temperature_type_col{
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+
+            .weather_img_type{
+                width: 195px;
+                height: 195px;
+            }
+
+            .type_weather_text{
+                margin: 24px 0 0 0;
+                color:va.$second-color-light_th;
+
+                h2{
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 55px;
+                    line-height: 43px;
+                }
+
+                p{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 43px;
+                }
+
+            }
+
+
+        }
+
+    }
+
+}
