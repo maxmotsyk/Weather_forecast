@@ -1,6 +1,7 @@
 @use '/src/assets/module' as va;
 
 section{
+    flex-grow: 1;
 
     .temperature_type_row{
         margin: 42px 0 0 0;
@@ -35,6 +36,117 @@ section{
 
             }
 
+
+        }
+
+    }
+
+    .additionals_value_row{
+        margin: 47px 0 0 0;
+
+        .additionals_value_col{
+            padding: 0 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+
+            .item{
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+    
+                h3{
+                    margin: 5px 0  0  0;
+                    font-weight: 600;
+                    font-size: 20px;
+                    color:va.$main-color;
+                }
+    
+                p{
+                    margin: 10px 0 0 0;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color:va.$second-color-light_th;
+                }
+                
+            }
+
+        }
+
+    }
+
+    .weather_day_row{
+        margin: 40px 0 0 0;
+
+        .weather_day_col{
+            display: flex;
+            align-items:center;
+            justify-content: flex-start;
+            overflow-y: scroll;
+
+
+            .item{
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+                transition: 0.3s all;
+                color:va.$second-color-light_th;
+
+                p{
+                    white-space: nowrap;
+                    font-weight: 500;
+                    font-size: 16px;
+                }
+
+                img{
+                    margin: 8px 0 0 0;
+                    width:40px;
+                    height:40px;
+                }
+
+                h3{
+                    margin: 8px 0 0 0;
+                    font-weight: 500;
+                    font-size: 22px;
+                }
+
+                &:not(:last-child){
+                    margin: 0 24px 0 0 ;
+                }
+
+            }
+
+        }
+
+    }
+
+
+    .week_weather_modal_window{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 450px;
+        padding:18px 12px 0;
+        border-radius: 40px 40px 0px 0px;
+        background: radial-gradient(113.32% 488.63% at -7.67% -7.72%, rgba(255, 249, 249, 0.21) 0%, rgba(255, 255, 255, 0.0945) 100%);
+        box-shadow: 0px 0px 25px 9px rgba(51, 93, 132, 0.23);
+        backdrop-filter: blur(18px);
+
+        .modal_window_col{
+            display:flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            &:after{
+                margin: 0 auto;
+                display: block;
+                content:'';
+                width: 40px;
+                height: 4px;
+                background-color: va.$main-color;
+                border-radius:3px;
+            }
 
         }
 
