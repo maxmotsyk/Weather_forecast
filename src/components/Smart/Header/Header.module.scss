@@ -1,0 +1,57 @@
+@use '/src/assets/module' as va;
+
+header{
+
+    .main_header_row{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        .col_name_country_city{
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+    
+            h2{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 25px;
+                line-height: 43px;
+                color:va.$second-color-light_th;
+
+                b{
+                    font-weight: 400;
+                }
+
+            }
+
+            h3{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                color:va.$third-color-light_th
+            }
+    
+        }
+    
+        .burger_bt_col{
+    
+            .burger_ico{
+                width: 23px;
+                height: 23px;
+                cursor: pointer;
+                transition: 0.3s all;
+
+                &:hover{
+                    opacity: 0.8;
+                }
+
+            }
+    
+        }
+    
+    }
+
+}
