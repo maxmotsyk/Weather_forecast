@@ -1,7 +1,7 @@
 import s from './Weekly_forecast.module.scss';
 
 export const Weekly_forecast = () => {
-    
+
     return (
 
         <div className={s.bottom_sheet_row}>
