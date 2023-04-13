@@ -1,6 +1,8 @@
 @use '/src/assets/module' as va;
 
 header{
+    width: 100%;
+    position: relative;
 
     .main_header_row{
         width: 100%;
@@ -53,5 +55,33 @@ header{
         }
     
     }
+
+   .burgerBody{
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+
+        form{
+
+            label{
+                min-width: 366px;
+                height: 46px;
+
+                .cityInput{
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+
+            }
+
+
+        }
+
+   }   
+
 
 }

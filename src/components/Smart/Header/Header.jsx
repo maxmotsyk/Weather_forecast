@@ -1,6 +1,38 @@
 import s from './Header.module.scss'
 
-export const Header = () => {
+export const Header = (props) => {
+
+    try{
+
+        if(typeof(props.cityName) != 'string' || typeof(props.country != 'string')){
+            throw new Error ("Props have wrong format ")
+        }
+
+    }
+    catch(error){
+        console.log(error);
+    }
+
+    function setCurentData (){
+
+        const data = new Date(),
+              curentMount = data.getMonth() + 1 > 10 ? data.getMonth() + 1 : '0' + data.getMonth(),
+              curentData =  data.getDate() + 1 > 10 ? data.getDate() + 1 : '0' + data.getDate(),
+              curentDay = data.getDay() - 1;
+
+        const daysWeek = [
+            'Mon',
+            'Tues',
+            'Weds',
+            'Thurs',
+            'Fri',
+            'Sat',
+            'Sun'
+        ]
+
+        return `${daysWeek[curentDay]} ${curentData}.${curentMount}` ;
+
+    }
 
     return (
 
@@ -13,11 +45,11 @@ export const Header = () => {
                     <div className={s.col_name_country_city}>
 
                         <h2>
-                            Ukraine,<b>Kiev</b>
+                            {props.country},<b>{props.cityName}</b>
                         </h2>
 
                         <h3>
-                            Mon 23.02
+                           {setCurentData()}
                         </h3>
 
                     </div>
@@ -29,6 +61,20 @@ export const Header = () => {
                     </div>
 
                 </div>
+
+            </div>
+
+            <div className={s.burgerBody}>
+
+                <form>
+
+                    <label>
+                            <input className={s.cityInput} type="text" name='foundCity'/>
+                    </label>
+                    
+                    <img src="" alt="" />
+                    
+                </form>
 
             </div>
 

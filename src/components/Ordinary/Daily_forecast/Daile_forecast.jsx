@@ -1,6 +1,7 @@
 import s from './Daile_forecast.module.scss';
 
-export const Daile_forecast = () => {
+export const Daile_forecast = ({ daileForecast }) => {
+
 
     return (
 
@@ -8,85 +9,24 @@ export const Daile_forecast = () => {
 
             <div className={s.weather_day_col}>
 
-                <div className={s.item}>
+                {
+                    
+                    daileForecast.map(({ date, imgSrc, temp }) => (
 
-                    <p>11 Am</p>
+                        <div className={s.item}>
 
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
+                            <p>{date}</p>
 
-                    <h3>-10°</h3>
+                            <img src={imgSrc} />
 
-                </div>
+                            <h3>{temp}°</h3>
 
-                <div className={s.item}>
+                        </div>
 
-                    <p>11 Am</p>
+                    ))
 
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
+                }
 
-                    <h3>-10°</h3>
-
-                </div>
-
-                <div className={s.item}>
-
-                    <p>11 Am</p>
-
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
-
-                    <h3>-10°</h3>
-
-                </div>
-
-                <div className={s.item}>
-
-                    <p>11 Am</p>
-
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
-
-                    <h3>-10°</h3>
-
-                </div>
-
-                <div className={s.item}>
-
-                    <p>11 Am</p>
-
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
-
-                    <h3>-10°</h3>
-
-                </div>
-
-                <div className={s.item}>
-
-                    <p>11 Am</p>
-
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
-
-                    <h3>-10°</h3>
-
-                </div>
-
-                <div className={s.item}>
-
-                    <p>11 Am</p>
-
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
-
-                    <h3>-10°</h3>
-
-                </div>
-
-                <div className={s.item}>
-
-                    <p>11 Am</p>
-
-                    <img src="/img/weather_ico/Rainy.svg" alt="" />
-
-                    <h3>-10°</h3>
-
-                </div>
 
             </div>
 

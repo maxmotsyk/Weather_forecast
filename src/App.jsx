@@ -1,18 +1,48 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from './api/axios';
 import './App.scss';
 import './assets/reset_style.scss';
 import { Header } from './components/Smart/Header/Header';
 import { Section } from './components/Smart/Section/Section';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [weatherData, setWeatherData] = useState({});
+  const [daileForecast, setDaileForecast] = useState({});
+  const apiKey = import.meta.env.VITE_REACT_APP_OPEAN_WETHER_KEY;
+  let foundCity = 'Kiev';
+
+ 
+  useEffect(() => {
+
+    async function getWeatherData() {
+
+      try {
+        const weatherDataReg = await axios.get(`weather?q=${foundCity}&appid=${apiKey}`),
+              daileForecastReg = await axios.get(`forecast?q=${foundCity}&cnt=8&appid=${apiKey}`);
+   
+        setWeatherData(weatherDataReg.data);
+        setDaileForecast(daileForecastReg.data);
+      }
+      catch (error) {
+        console.error(error);
+      }
+
+    }
+
+    getWeatherData();
+
+  }, [])
+
+  // console.log(weatherData)
 
   return (
     <div className="App">
 
       <div className="wrapper">
-            <Header/>
-            <Section/>
+        <Header cityName={weatherData?.name} country={weatherData?.sys?.country} />
+        {/* <Header cityName={weatherData.name} country={weatherData.sys ? weatherData.sys.country : ''} /> */}
+        <Section mainData={weatherData?.main} weatherType={weatherData.weather?.[0].main} daileForecastArr = {daileForecast?.list} />
       </div>
 
     </div>
