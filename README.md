@@ -1,3 +1,5 @@
+![Image alt](https://github.com/maxmotsyk/Weather_forecast/raw/main/public/img/ReadmyImg.jpg)
+
 # Weather Forecast
 This is a web application for finding the weather in your city - country. As a result of the search on the main screen of your device, you will be able to see the following information:
 + Real time weather forecast (min temperature, max temperature, weather type, air humidity, pressure)
