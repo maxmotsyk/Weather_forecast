@@ -96,7 +96,6 @@ export const Section = (props) => {
                 'img' : weatherImgSrc[typeWeather]
             })
 
-            console.log(typeWeather);
         }
 
         return weeklyForecast;

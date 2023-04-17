@@ -2,8 +2,6 @@ import s from './Weekly_forecast.module.scss';
 
 export const Weekly_forecast = ({ weeklyDate }) => {
 
-    console.log(weeklyDate);
-
     return (
 
         <div className={s.bottom_sheet_row}>
