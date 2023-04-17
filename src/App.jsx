@@ -10,37 +10,33 @@ function App() {
   const [weatherData, setWeatherData] = useState({});
   const [daileForecast, setDaileForecast] = useState({});
   const apiKey = import.meta.env.VITE_REACT_APP_OPEAN_WETHER_KEY;
-  let foundCity = 'Kiev';
 
+  async function getWeatherData(foundCity = localStorage.getItem('city') ? localStorage.getItem('city') : 'Kiev') {
+
+    try {
+      const weatherDataReg = await axios.get(`weather?q=${foundCity}&appid=${apiKey}`),
+            daileForecastReg = await axios.get(`forecast?q=${foundCity}&cnt=40&appid=${apiKey}`);
  
-  useEffect(() => {
-
-    async function getWeatherData() {
-
-      try {
-        const weatherDataReg = await axios.get(`weather?q=${foundCity}&appid=${apiKey}`),
-              daileForecastReg = await axios.get(`forecast?q=${foundCity}&cnt=8&appid=${apiKey}`);
-   
-        setWeatherData(weatherDataReg.data);
-        setDaileForecast(daileForecastReg.data);
-      }
-      catch (error) {
-        console.error(error);
-      }
-
+      setWeatherData(weatherDataReg.data);
+      setDaileForecast(daileForecastReg.data);
     }
+    catch (error) {
+      console.error(error);
+    }
+
+  }
+
+  useEffect(() => {
 
     getWeatherData();
 
   }, [])
 
-  // console.log(weatherData)
-
   return (
     <div className="App">
 
       <div className="wrapper">
-        <Header cityName={weatherData?.name} country={weatherData?.sys?.country} />
+        <Header cityName={weatherData?.name} getData = {getWeatherData} />
         {/* <Header cityName={weatherData.name} country={weatherData.sys ? weatherData.sys.country : ''} /> */}
         <Section mainData={weatherData?.main} weatherType={weatherData.weather?.[0].main} daileForecastArr = {daileForecast?.list} />
       </div>

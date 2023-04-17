@@ -1,36 +1,46 @@
-import s from './Header.module.scss'
+import s from './Header.module.scss';
+import React from 'react';
+// import { useState, useEffect } from 'react';
 
 export const Header = (props) => {
 
-    try{
+    let inputCityValue =  React.createRef();
+    // const [inputWeatherData, setInputWeatherData] = useState(props.cityName)
 
-        if(typeof(props.cityName) != 'string' || typeof(props.country != 'string')){
-            throw new Error ("Props have wrong format ")
+    try {
+
+        if (typeof (props.cityName) != 'string' || typeof (props.country != 'string')) {
+            throw new Error("Props have wrong format ")
         }
 
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 
-    function setCurentData (){
+    function searchWeatherCity (){
+        localStorage.setItem('city',`${inputCityValue.current.value}`);
+        props.getData(inputCityValue.current.value);
+    }
+
+    function setCurentData() {
 
         const data = new Date(),
-              curentMount = data.getMonth() + 1 > 10 ? data.getMonth() + 1 : '0' + data.getMonth(),
-              curentData =  data.getDate() + 1 > 10 ? data.getDate() + 1 : '0' + data.getDate(),
-              curentDay = data.getDay() - 1;
+            curentMount = data.getMonth() + 1 > 10 ? data.getMonth() + 1 : '0' + (data.getMonth() + 1),
+            curentData = data.getDate() > 10 ? data.getDate() : '0' + data.getDate(),
+            curentDay = data.getDay() ;
 
         const daysWeek = [
+            'Sun',
             'Mon',
             'Tues',
             'Weds',
             'Thurs',
             'Fri',
             'Sat',
-            'Sun'
         ]
 
-        return `${daysWeek[curentDay]} ${curentData}.${curentMount}` ;
+        return `${daysWeek[curentDay]} ${curentData}.${curentMount}`;
 
     }
 
@@ -44,37 +54,35 @@ export const Header = (props) => {
 
                     <div className={s.col_name_country_city}>
 
-                        <h2>
-                            {props.country},<b>{props.cityName}</b>
-                        </h2>
+                        <form className={s.searchCityForm}>
+
+                            <label htmlFor="">
+
+                                <img src="img/header_ico/place-ico.svg" alt="ico-point" />
+
+                                <input placeholder={props.cityName} autocomplete="off"  type="text" name='citySearch' ref={inputCityValue} />
+
+                            </label>
+
+                        </form>
 
                         <h3>
-                           {setCurentData()}
+                            {setCurentData()}
                         </h3>
 
                     </div>
 
                     <div className={s.burger_bt_col}>
 
-                        <img className={s.burger_ico} src="/img/header_ico/Group 142.svg" alt="" />
+                        <div className={s.burger_bt}>
+
+                            <img onClick={() => {searchWeatherCity()}} src="img/header_ico/loupe-ico.svg" alt="loupe-ico" />
+
+                        </div>
 
                     </div>
 
                 </div>
-
-            </div>
-
-            <div className={s.burgerBody}>
-
-                <form>
-
-                    <label>
-                            <input className={s.cityInput} type="text" name='foundCity'/>
-                    </label>
-                    
-                    <img src="" alt="" />
-                    
-                </form>
 
             </div>
 

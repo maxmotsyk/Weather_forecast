@@ -8,16 +8,26 @@ export const Section = (props) => {
     let weatherType = props.weatherType;
     let mainData = props.mainData;    
 
+    const daysWeek = [
+        'Mon',
+        'Tues',
+        'Weds',
+        'Thurs',
+        'Fri',
+        'Sat',
+        'Sun'
+    ]
+
     // console.log(mainData)
 
     const weatherImgSrc = {
         clouds: '/img/weather_ico/Clouds.svg',
         snowy: '/img/weather_ico/Snowy.svg',
         sunny: '/img/weather_ico/Sunny.svg',
-        rainy: '/img/weather_ico/Rainy.svg',
+        rain: '/img/weather_ico/Rainy.svg',
         rain_thunder: '/img/weather_ico/RainThunder.svg',
         partly_cloudly: '/img/weather_ico/PartlyCloudly.svg',
-        clear: '/img/weather_ico/Sunny.svg'
+        clear: '/img/weather_ico/ClearSky.svg'
     }
 
     function parseDaileForecastData (){
@@ -53,7 +63,46 @@ export const Section = (props) => {
 
     }
 
-    parseDaileForecastData();
+    function getWeeklyForecast(data){
+
+        let tempArr =  data?.reduce((newArr, item)=>{
+
+            let cuerentDay = daysWeek[+new Date(item.dt_txt).getDay()];
+
+            newArr[cuerentDay] = newArr[cuerentDay] ?? [];
+            newArr[cuerentDay].push(item); 
+
+            return newArr;
+
+        },{})
+
+        let weeklyForecast = [];
+
+        for(let key in tempArr ){
+
+            let min = 0,max = 0 , typeWeather = ''
+
+            tempArr[key]?.forEach(item =>{
+                
+                min += (item.main?.temp_min - 273.15);
+                max += (item.main?.temp_max - 273.15);
+                typeWeather = item.weather?.[0].main.toLowerCase();
+            })
+
+            weeklyForecast.push({
+                'day' : key,
+                'min' : Math.round(min / tempArr[key].length),
+                'max' : Math.round(max / tempArr[key].length),
+                'img' : weatherImgSrc[typeWeather]
+            })
+
+            console.log(typeWeather);
+        }
+
+        return weeklyForecast;
+
+    }
+
 
     function setWeatherImg(type){
 
@@ -139,7 +188,7 @@ export const Section = (props) => {
 
                 <Daile_forecast daileForecast = {parseDaileForecastData()} />
 
-                <Weekly_forecast />
+                <Weekly_forecast weeklyDate = {getWeeklyForecast(props.daileForecastArr)} />
 
             </div>
 

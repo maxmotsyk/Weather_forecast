@@ -7,27 +7,47 @@ header{
     .main_header_row{
         width: 100%;
         display: flex;
-        align-items: center;
         justify-content: space-between;
     
         .col_name_country_city{
             display: flex;
             flex-direction: column;
             text-align: start;
-    
-            h2{
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 600;
-                font-size: 25px;
-                line-height: 43px;
-                color:va.$second-color-light_th;
 
-                b{
-                    font-weight: 400;
+
+            .searchCityForm{
+
+                label{
+                    display: flex;
+
+                    img{
+                        margin: 0 12px 0 0 ;
+                    }
+
+                    input{
+                        padding: 0;
+                        background:none;
+                        border:none;
+    
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 25px;
+                        line-height: 43px;
+                        color:va.$second-color-light_th;
+                        font-weight: 400;
+
+                        &::placeholder{
+                            color:va.$second-color-light_th;
+                        }
+
+                    }
+
+
                 }
 
             }
+    
 
             h3{
                 font-style: normal;
@@ -39,12 +59,23 @@ header{
         }
     
         .burger_bt_col{
+            margin: 3px 0 0 0;
     
-            .burger_ico{
-                width: 23px;
-                height: 23px;
+            .burger_bt{
+                display: flex;
+                align-items:center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius:50%;
                 cursor: pointer;
                 transition: 0.3s all;
+                background:radial-gradient(113.32% 488.63% at -7.67% -7.72%, 
+                          rgba(255, 249, 249, 0.21) 0%,
+                          rgba(255, 255, 255, 0.0945) 100%);
+
+                box-shadow: 0px 0px 25px 9px rgba(51, 93, 132, 0.13);
+                backdrop-filter: blur(18px);
 
                 &:hover{
                     opacity: 0.8;
