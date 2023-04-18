@@ -9,7 +9,7 @@ function App() {
 
   const [weatherData, setWeatherData] = useState({});
   const [daileForecast, setDaileForecast] = useState({});
-  const apiKey = import.meta.env.VITE_REACT_APP_OPEAN_WETHER_KEY;
+  const apiKey = import.meta.env.VITE_REACT_APP_OPEN_WEATHER_KEY;
 
   async function getWeatherData(foundCity = localStorage.getItem('city') ? localStorage.getItem('city') : 'Kiev') {
 

@@ -41,7 +41,7 @@ export const Section = (props) => {
                 let date = item.dt_txt.match(/\d\d\:/m)[0].replace(/\:/g,''),
                     temp = Math.round(item.main.temp - 273.15),
                     img  = setWeatherImg(item.weather ? item.weather[0].main : '');
-
+                    
                 if(date){
 
                     newArr.push({
